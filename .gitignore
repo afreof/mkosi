@@ -4,7 +4,7 @@
 /.mkosi-*
 /SHA256SUMS
 /SHA256SUMS.gpg
-/__pycache__
+__pycache__
 /build
 /dist
 /image
@@ -18,4 +18,8 @@
 /mkosi.extra
 /mkosi.nspawn
 /mkosi.rootpw
-.mypy_cache/
+.pytest_cache/
+.cache
+.project
+.pydevproject
+tags
