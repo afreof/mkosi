@@ -2927,7 +2927,13 @@ class ListAction(argparse.Action):
         for x in new:
             if self.list_choices is not None and x not in self.list_choices:
                 raise ValueError(f'Unknown value {x!r}')
-            ary.append(x)
+
+            # Remove ! prefixed list entries from list, works for strings only now.
+            if x.startswith('!'):
+                if x[1:] in ary:
+                    ary.remove(x[1:])
+            else:
+                ary.append(x)
         setattr(namespace, self.dest, ary)
 
 
