@@ -2954,7 +2954,7 @@ def parse_compression(value: str) -> Union[str, bool]:
     return parse_boolean(value)
 
 
-def parse_args() -> CommandLineArguments:
+def create_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description='Build Legacy-Free OS Images', add_help=False)
 
     group = parser.add_argument_group("Commands")
@@ -3074,6 +3074,11 @@ def parse_args() -> CommandLineArguments:
     except ImportError:
         pass
 
+    return parser
+
+
+def parse_args() -> CommandLineArguments:
+    parser = create_parser()
     args = cast(CommandLineArguments, parser.parse_args(namespace=CommandLineArguments()))
 
     if args.verb == "help":
