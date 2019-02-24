@@ -366,6 +366,11 @@ details see the table below.
   (see below) to specify packages that shall only be used for the
   image generated in the build image, but that shall not appear in the
   final image.
+  To remove a package e.g. added by a mkosi.default configuration file
+  prepend the package name with a ! letter. For example -p "!apache2"
+  would remove the apache2 package. To replace the apache2 package by
+  the httpd package just add -p "!apache2,httpd" to the command line
+  arguments.
 
 `--with-docs`
 
