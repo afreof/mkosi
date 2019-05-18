@@ -18,4 +18,4 @@ blocks:
             - pytest-3 -v
         - name: Test Images
           commands:
-            - ./ci/semaphore.sh
+            - ./.semaphore/test_images.sh
