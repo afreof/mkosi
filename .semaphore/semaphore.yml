@@ -1,0 +1,21 @@
+version: v1.0
+name: mkosi CI testing
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: "Test mkosi"
+    task:
+      prologue:
+        commands:
+          - sudo apt-get --allow-releaseinfo-change update
+          - sudo apt-get update && sudo apt-get install -y python3-dev python3-pytest debootstrap systemd-container squashfs-tools bash
+          - checkout
+      jobs:
+        - name: Run Unit Tests
+          commands:
+            - pytest-3 -v
+        - name: Test Images
+          commands:
+            - ./ci/semaphore.sh
